@@ -1,0 +1,223 @@
+% !TeX program = xelatex
+% 示例文档：XeLaTeX 编译
+\documentclass[UTF8,a4paper,11pt,onecolumn,fontset=none]{ctexart}
+
+\usepackage{geometry}
+\usepackage{fontspec}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{indentfirst}
+\usepackage{tocloft}
+\usepackage{amsmath,amssymb}
+\usepackage{etoolbox}
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage{placeins}
+\usepackage{caption}
+\usepackage[hidelinks]{hyperref}
+
+\geometry{left=2.7cm,right=2.7cm,top=3.4cm,bottom=3.4cm}
+
+\setmainfont{Times New Roman}
+\setsansfont{Times New Roman}
+\setCJKmainfont{SimSun}[AutoFakeBold=2.5]
+\setCJKsansfont{SimSun}[AutoFakeBold=2.5]
+\setCJKmonofont{SimSun}
+
+\AtBeginDocument{\zihao{-4}\selectfont\setstretch{1.25}}
+\AtBeginEnvironment{table}{\singlespacing}
+\AtBeginEnvironment{figure}{\singlespacing}
+\AtBeginEnvironment{thebibliography}{\singlespacing}
+\DeclareCaptionLabelFormat{cnlabel}{{\xeCJKsetup{CJKecglue={}}#1\unskip#2}}
+\captionsetup{font=bf,labelfont=bf,labelformat=cnlabel,labelsep=space}
+\setlength{\heavyrulewidth}{1.5pt}
+\setlength{\lightrulewidth}{0.75pt}
+\setlength{\cmidrulewidth}{0.75pt}
+\setlength{\parindent}{2em}
+\setcounter{tocdepth}{3}
+
+\newcommand{\bodytitlefont}{\fontsize{12pt}{14.4pt}\selectfont\bfseries}
+\ctexset{
+  section = {
+    format = {\bodytitlefont\raggedright}
+  },
+  subsection = {
+    format = {\bodytitlefont\raggedright}
+  },
+  subsubsection = {
+    format = {\bodytitlefont\raggedright}
+  }
+}
+
+\newcommand{\tocfirstlevelfont}{\fontsize{12pt}{16pt}\selectfont\bfseries}
+\newcommand{\tocsublevelfont}{\fontsize{12pt}{16pt}\selectfont\bfseries}
+\renewcommand{\cftsecfont}{\tocfirstlevelfont}
+\renewcommand{\cftsecpagefont}{\tocfirstlevelfont}
+\renewcommand{\cftsubsecfont}{\tocsublevelfont}
+\renewcommand{\cftsubsecpagefont}{\tocsublevelfont}
+\renewcommand{\cftsubsubsecfont}{\tocsublevelfont}
+\renewcommand{\cftsubsubsecpagefont}{\tocsublevelfont}
+\renewcommand{\cftdotsep}{1.2}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsubsubsecleader}{\cftdotfill{\cftdotsep}}
+\setlength{\cftsecindent}{0em}
+\setlength{\cftsubsecindent}{2em}
+\setlength{\cftsubsubsecindent}{4em}
+\setlength{\cftsecnumwidth}{2em}
+\setlength{\cftsubsecnumwidth}{2.8em}
+\setlength{\cftsubsubsecnumwidth}{3.6em}
+\cftsetindents{section}{0em}{2em}
+\cftsetindents{subsection}{2em}{2.8em}
+\cftsetindents{subsubsection}{4em}{3.6em}
+\setlength{\cftbeforesecskip}{0pt}
+\setlength{\cftbeforesubsecskip}{0pt}
+\setlength{\cftbeforesubsubsecskip}{0pt}
+\renewcommand{\cftsecafterpnum}{\vskip 0.35em}
+\renewcommand{\cftsubsecafterpnum}{\vskip 0.2em}
+\renewcommand{\cftsubsubsecafterpnum}{\vskip 0.15em}
+\makeatletter
+\newcommand{\customtableofcontents}{%
+  \begin{center}
+    {\fontsize{12pt}{14.4pt}\selectfont\bfseries 目录}
+  \end{center}
+  \vspace{1em}
+  \@starttoc{toc}
+}
+\makeatother
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[C]{\thepage}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \renewcommand{\footrulewidth}{0pt}%
+}
+\fancypagestyle{frontmatter}{%
+  \fancyhf{}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \renewcommand{\footrulewidth}{0pt}%
+}
+
+\newcommand{\PaperTitle}{数学建模测试文档1}
+\newcommand{\PaperAuthor}{张三}
+\newcommand{\PaperAbstract}{本文围绕数字经济背景下中小企业创新能力的形成机制展开讨论。文章首先梳理数字技术、组织学习与创新绩效之间的关系，其次构建分析框架，并结合示例数据说明数字化投入对企业流程优化和产品创新的影响。研究认为，数字工具本身并不自动带来创新优势，企业需要同时推进数据治理、组织协同与人才培养，才能将技术投入转化为持续创新能力。}
+\newcommand{\PaperKeywords}{数字经济；中小企业；创新能力；组织学习}
+
+\begin{document}
+
+\pagenumbering{gobble}
+\pagestyle{frontmatter}
+\begin{titlepage}
+  \thispagestyle{frontmatter}
+  \centering
+  \vspace*{2.5cm}
+  {\zihao{2}\bfseries \PaperTitle\par}
+  \vspace{1.5cm}
+  {\zihao{-4} \PaperAuthor\par}
+  \vspace{2cm}
+
+  {\zihao{4}\bfseries 摘\quad 要\par}
+  \vspace{1em}
+  \begin{minipage}{0.88\textwidth}
+    \PaperAbstract
+
+    \vspace{1em}
+    \noindent\textbf{关键词：}\PaperKeywords
+  \end{minipage}
+  \vfill
+\end{titlepage}
+
+\clearpage
+\thispagestyle{frontmatter}
+\customtableofcontents
+\thispagestyle{frontmatter}
+
+\clearpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\pagestyle{plain}
+
+\section{问题重述}
+随着民航客流量持续增长，大型机场航站楼前交通中心逐渐成为城市综合交通系统中的重要换乘节点。该区域同时承担出租车、网约车、机场巴士、公交车、私家车等多类车辆的到发、停靠、上下客和疏散任务。由于旅客到达具有明显的时段集中性，不同车辆的运行规则、服务效率和停靠需求又存在差异，高峰时段交通中心容易出现车辆排队交织、上下客区域占用不均、道路通行效率下降等现象，进而导致旅客等待时间延长、局部道路拥堵加剧以及驾驶员收益分配不均等问题。
+
+在不扩建道路和不改变既有基础设施规模的前提下，机场管理方希望通过科学的交通组织和动态调度方法提升交通中心的综合运行效率。该问题的核心在于：一方面，需要识别不同车辆类型、不同功能区和不同时段下的拥堵瓶颈，明确造成排队和延误的主要因素；另一方面，需要在旅客出行体验、车辆驾驶员收益和道路运行效率之间进行协调，使有限的道路与站点资源得到更合理的分配。
+
+\textbf{问题1}：要求建立用于分析机场交通中心拥堵瓶颈的数学模型。模型应能够刻画旅客需求到达、车辆排队服务、上下客泊位占用、道路通行能力及多类车辆相互干扰等因素之间的关系，并选取一线城市与准一线城市各一个典型机场作为案例，结合实际或模拟数据给出拥堵瓶颈识别过程和分析结果。
+
+\textbf{问题2}：要求在问题1瓶颈分析的基础上，设计机场交通中心的动态调度方案。该方案需要根据客流强度、车辆到达状态、道路负荷和候车队列变化，对不同车辆类型的进场、排队、停靠和离场过程进行动态协调，在降低旅客等待时间和道路拥堵程度的同时，兼顾车辆驾驶员的接单效率和收益公平性。针对问题1所选取的两个机场，应分别给出具体调度方案，并进一步比较两个方案在适用场景、运行效果、实施难度和优缺点方面的差异。
+
+\textbf{问题3}：要求对问题2所提出的动态调度方案进行鲁棒性评估。由于机场交通中心运行过程会受到航班延误、客流突增、车辆供给不足、局部道路通行能力下降以及不同车辆类型需求比例变化等不确定因素影响，需构建相应的扰动情景或敏感性分析方法，检验调度方案在多种异常或波动条件下的稳定性、适应性和性能退化程度，并据此评价方案的实际应用可靠性。
+
+\section{问题分析}
+\subsection{问题1分析}
+问题1的核心任务是识别机场航站楼前交通中心的拥堵瓶颈，并用数学模型刻画瓶颈形成、传导和放大的过程。航站楼前交通中心并不是单一车道通行问题，而是由旅客到达、车辆进场、排队候客、泊位上下客、出口疏散等环节组成的多服务台排队网络。出租车、网约车、私家车、机场巴士和公交车在运行规则、平均载客量、停靠时间和调度方式上均存在差异，因此高峰时段的拥堵通常不是由单一车辆数量过多造成，而是由“需求集中到达、泊位服务能力有限、临停车辆干扰通行、出口疏散能力不足”等因素共同作用形成。
+
+本文选取上海虹桥国际机场作为一线城市机场代表，选取杭州萧山国际机场作为准一线城市机场代表。两者均承担较高强度的航空客流和城市地面交通换乘需求，但在航站楼前道路断面、上落客区组织方式和车辆供给响应速度方面存在差异。图~\ref{fig:hq_road} 给出了上海虹桥国际机场航站楼前机动车道路情况。可以看出，虹桥机场航站楼前车辆通行车道与路侧上下客区域距离较近，车辆在靠边停靠、旅客装卸行李和重新并入车流的过程中容易对相邻通行车道产生扰动。当出租车和网约车到达较集中时，若路侧泊位周转速度低于车辆到达强度，排队会从泊位区向上游道路回溢，形成典型的路侧服务瓶颈。
+
+\begin{figure}[!t]
+  \centering
+  \includegraphics[width=0.82\textwidth]{HQ.png}
+  \caption{上海虹桥国际机场航站楼前机动车道路示意}
+  \label{fig:hq_road}
+\end{figure}
+
+\begin{figure}[!t]
+  \centering
+  \includegraphics[width=0.82\textwidth]{XS.png}
+  \caption{杭州萧山国际机场航站楼前机动车道路示意}
+  \label{fig:xs_road}
+\end{figure}
+图~\ref{fig:xs_road} 给出了杭州萧山国际机场航站楼前机动车道路情况。与虹桥相比，萧山机场航站楼前道路断面相对开阔，通行车道与上客区域具有一定分离特征，车辆通过能力相对稳定。但该类道路组织下仍可能出现两类瓶颈：一是车辆在进入指定停靠区前需要完成分流和换道，若入口导向或车辆类型分配不均，会在上游形成入口瓶颈；二是当航班集中到达导致旅客需求短时增加时，出租车、网约车等弹性供给车辆存在响应滞后，车辆供给不足会使旅客等待队列快速增长，形成需求侧瓶颈。
+
+因此，问题1可抽象为多类型车辆、多节点服务能力约束下的动态拥堵识别问题。设第 $m$ 类车辆在时刻 $t$ 的需求到达率为 $\lambda_m(t)$，单位车辆平均占用路侧泊位时间为 $\tau_m$，可用泊位数为 $s_m$，对应泊位服务能力可表示为 $s_m/\tau_m$；同时设入口道路通行能力为 $C_{\mathrm{in}}$，出口疏散能力为 $C_{\mathrm{out}}$，第 $m$ 类车辆对道路资源的等效占用系数为 $e_m$。由此得到瓶颈判据如下：
+\[
+  \sum_m e_m\lambda_m(t)>C_{\mathrm{in}},\quad
+  \lambda_m(t)>\frac{s_m}{\tau_m},\quad
+  \sum_m e_m q_m(t)>C_{\mathrm{out}}
+\]
+若上述任一条件成立，相应位置便可能成为拥堵瓶颈。其中 $q_m(t)$ 表示第 $m$ 类车辆在系统内的排队或等待规模。由此可见，机场交通中心瓶颈识别需要同时关注道路通行能力、泊位周转能力和车辆供需匹配程度。后续建模可在此基础上建立排队网络模型或离散时间仿真模型，通过比较各环节负载率、平均等待时间、队列长度和瓶颈持续时间，判断虹桥机场与萧山机场在高峰时段的主要拥堵来源及其差异。
+
+
+\section{模型假设}
+本文构建的简化模型如下：
+\begin{equation}
+  I = \alpha D + \beta L + \gamma C + \varepsilon,
+  \label{eq:model}
+\end{equation}
+\begin{table}[htbp]
+  \centering
+  \caption{示例三线表}
+  \label{tab:sample-three-line}
+  \begin{tabular}{lccc}
+    \toprule
+    指标 & 样本数 & 均值 & 标准差 \\
+    \midrule
+    数字化投入 & 120 & 3.82 & 0.74 \\
+    组织学习能力 & 120 & 3.65 & 0.69 \\
+    创新绩效 & 120 & 3.91 & 0.81 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+其中，$I$ 表示创新绩效，$D$ 表示数字化投入，$L$ 表示组织学习能力，$C$ 表示控制变量，$\varepsilon$ 表示随机扰动项。式\eqref{eq:model}说明，创新绩效可被理解为多种企业能力共同作用的结果。
+
+\section{符号说明}
+以某制造型中小企业为例，该企业通过建设订单管理系统，将客户需求、库存状态和生产排程连接起来。系统上线后，企业能够更快识别小批量定制需求，并将反馈传递到研发与生产部门。公开网络资源也显示，数字化服务平台正在成为中小企业获取技术支持的重要渠道\cite{miit-online}。
+
+\section{模型的建立与求解}
+数字经济背景下，中小企业提升创新能力需要避免“重工具、轻组织”的误区。企业应在数字基础设施建设之外，持续完善数据治理机制、跨部门协作流程和员工学习体系。只有当数字化投入与组织学习相互配合时，技术资源才更可能转化为稳定的创新绩效。
+
+\begin{thebibliography}{99}
+  \bibitem{porter-book}迈克尔·波特．竞争优势[M]．北京：中信出版社，2014.
+  \bibitem{chen-journal}陈明，王华．数字化转型对企业创新绩效的影响[J]．管理科学，2023，36(2)：45--58.
+  \bibitem{li-dissertation}李敏．中小企业组织学习与创新绩效关系研究[D]．杭州：浙江大学，2021.
+  \bibitem{miit-online}工业和信息化部. 中小企业数字化转型指南[EB/OL]．https://www.miit.gov.cn/，访问时间（2026年5月26日）.
+\end{thebibliography}
+
+\section*{附录}
+\end{document}
